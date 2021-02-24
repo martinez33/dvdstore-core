@@ -2,12 +2,25 @@ package com.mycompany.dvdstore.entity;
 
 public class Movie {
 
+    private Long id;
     private String title;
     private String genre;
-    private Long id;
     private String description;
 
     public Movie() {
+    }
+
+    public Movie(Long id, String title, String genre) {
+        this.id = id;
+        this.title = title;
+        this.genre = genre;
+    }
+
+    public Movie(Long id, String title, String genre, String description) {
+        this.id = id;
+        this.title = title;
+        this.genre = genre;
+        this.description = description;
     }
 
     public String getTitle() {
