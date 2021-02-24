@@ -5,8 +5,6 @@ import com.mycompany.dvdstore.repository.MovieRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class DefaultMovieService implements MovieServiceInterface{
 
@@ -22,16 +20,16 @@ public class DefaultMovieService implements MovieServiceInterface{
     }
 
     public Movie registerMovie(Movie movie){
-        return movieRepositoryInterface.add(movie);
+        return movieRepositoryInterface.save(movie);
     }
 
     @Override
-    public List<Movie> getMovieList() {
-        return movieRepositoryInterface.list();
+    public Iterable<Movie> getMovieList() {
+        return movieRepositoryInterface.findAll();
     }
 
     @Override
     public Movie getMovieById(Long id) {
-        return movieRepositoryInterface.getById(id);
+        return movieRepositoryInterface.findById(id).orElseThrow();
     }
 }
